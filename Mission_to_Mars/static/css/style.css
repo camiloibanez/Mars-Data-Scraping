@@ -1,0 +1,145 @@
+body {
+    margin: 46px 100px !important;
+}
+
+.display-4 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.btn {
+    position: absolute;
+    left: 44%;
+}
+
+@media (min-width: 1517px) {
+    .featured_img {
+        width: 800px;
+    }
+
+    .featured_img_block {
+        width: 800px;
+    }
+
+    .weather_and_facts_block {
+        width: 500px;
+    }
+
+    .weather_block {
+        width: 500px;
+    }
+}
+
+@media (max-width:1517px) {
+    .featured_img {
+        width: 750px;
+    }
+
+    .featured_img_block {
+        width: 750px;
+    }
+
+    .weather_and_facts_block {
+        width: 450px;
+    }
+
+    .weather_block {
+        width: 450px;
+    }
+}
+
+@media (max-width:1420px) {
+    .featured_img {
+        width: 700px;
+    }
+
+    .featured_img_block {
+        width: 700px;
+    }
+
+    .weather_and_facts_block {
+        width: 400px;
+    }
+
+    .weather_block {
+        width: 400px;
+    }
+}
+
+@media (max-width:1320px) {
+    .featured_img {
+        width: 600px;
+    }
+
+    .featured_img_block {
+        width: 600px;
+    }
+
+    .weather_and_facts_block {
+        width: 400px;
+    }
+
+    .weather_block {
+        width: 400px;
+    }
+}
+
+@media (min-width: 1320px) {
+    .featured_img_block {
+        float: left;
+    }
+    
+    .weather_and_facts_block {
+        float: right;
+    }    
+}
+
+@media (max-width:1320px) {
+    .featured_img {
+        width: 700px;
+    }
+
+    .featured_img_block {
+        width: 700px;
+        float: none;
+    }
+
+    .weather_and_facts_block {
+        width: 400px;
+        float: none;
+    }
+
+    .weather_block {
+        width: 400px;
+    }
+}
+
+.weather_block {
+    margin: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: grey;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.table_title {
+    margin-left: 20px;
+}
+
+table {
+    margin: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.hemispheres {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.card {
+    width: 400px !important;
+}
