@@ -26,9 +26,6 @@
     padding-bottom: 6px;
     background-color: #FFBF00;
 }
-.weather_block {
-    background-color: white;
-}
 
 .block3 {
     padding-top: 40px;
@@ -51,7 +48,7 @@
     }
 
     .weather_block {
-        width: 500px;
+        width: 450px;
     }
 }
 
@@ -140,6 +137,8 @@
 }
 
 .weather_block {
+    background-color: #FFEF00;
+    opacity: 0.75;
     margin: 20px;
     border-style: solid;
     border-width: 2px;
