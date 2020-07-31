@@ -11,71 +11,74 @@
 
     <div class="background">
         <div class="block1">
-            <div class="jumbotron">
-                <h1 class="display-4">Mission to Mars</h1>
-                <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
-            </div>
-
-            <h3>Latest Mars News</h3>
-            <h5>{{ dict.news_title }}</h5>
-            <p>{{ dict.news_p }}</p>
-            
-            <div class="featured_img_block">
-                <h3>Featured Mars Image</h3>
-                <img class="featured_img" src= "{{ dict.featured_image_url }}" alt="featured space image">
-            </div>
-
-            <div class="weather_and_facts_block">
-                <div class="weather_block">
-                    <h5>Current Weather on Mars</h5>
-                    <p>{{ dict.mars_weather }}</p>
+            <div class="block2">
+                <div class="jumbotron">
+                    <h1 class="display-4">Mission to Mars</h1>
+                    <a class="btn btn-primary btn-lg btn1" href="/scrape" role="button">Scrape New Data</a>
                 </div>
 
-                <h5 class="table_title">Mars Facts</h5>
-                {% for table in tables %}
-                    {{ table|safe }}
-                {% endfor %}
+                <h3>Latest Mars News</h3>
+                <h5>{{ dict.news_title }}</h5>
+                <p>{{ dict.news_p }}</p>
+                
+                <div class="featured_img_block">
+                    <h3>Featured Mars Image</h3>
+                    <img class="featured_img" src= "{{ dict.featured_image_url }}" alt="featured space image">
+                </div>
+
+                <div class="weather_and_facts_block">
+                    <div class="weather_block">
+                        <h5>Current Weather on Mars</h5>
+                        <p>{{ dict.mars_weather }}</p>
+                    </div>
+
+                    <h5 class="table_title">Mars Facts</h5>
+                    {% for table in tables %}
+                        {{ table|safe }}
+                    {% endfor %}
+                </div>
+            
+
+                <div class="clear"></div>
+
+                <h5 class="hemispheres">Mars Hemispheres</h5>
             </div>
         
-
-            <div class="clear"></div>
-
-            <h5 class="hemispheres">Mars Hemispheres</h5>
-        </div>
-        <div class="block3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ pic1.img_url }}" class="card-img-top" alt="{{ pic1.title }}">
-                            <div class="card-body">
-                            <p class="card-text">{{ pic1.title }}</p>
+            <div class="block3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ pic1.img_url }}" class="card-img-top" alt="{{ pic1.title }}">
+                                <div class="card-body">
+                                <p class="card-text">{{ pic1.title }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ pic2.img_url }}" class="card-img-top" alt="{{ pic2.title }}">
+                                <div class="card-body">
+                                <p class="card-text">{{ pic2.title }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ pic2.img_url }}" class="card-img-top" alt="{{ pic2.title }}">
-                            <div class="card-body">
-                            <p class="card-text">{{ pic2.title }}</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ pic3.img_url }}" class="card-img-top" alt="{{ pic3.title }}">
+                                <div class="card-body">
+                                <p class="card-text">{{ pic3.title }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ pic3.img_url }}" class="card-img-top" alt="{{ pic3.title }}">
-                            <div class="card-body">
-                            <p class="card-text">{{ pic3.title }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ pic4.img_url }}" class="card-img-top" alt="{{ pic4.title }}">
-                            <div class="card-body">
-                            <p class="card-text">{{ pic4.title }}</p>
+                        <div class="col-md-6">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ pic4.img_url }}" class="card-img-top" alt="{{ pic4.title }}">
+                                <div class="card-body">
+                                <p class="card-text">{{ pic4.title }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
