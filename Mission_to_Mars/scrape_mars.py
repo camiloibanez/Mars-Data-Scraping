@@ -2,6 +2,7 @@ def scrape():
     from bs4 import BeautifulSoup
     from splinter import Browser
     import pandas as pd
+    import datetime
     import time
 
     executable_path = {'executable_path': 'chromedriver.exe'}
@@ -68,7 +69,9 @@ def scrape():
 
     browser.quit()
     
+    last_scraped = datetime.datetime.now()
+
     results = {"news_title": news_title, "news_p": news_p, "featured_image_url" : featured_image_url, "mars_weather": mars_weather,
-                "Mars_facts_table" : Mars_facts_table, "hemisphere_image_urls": hemisphere_image_urls}
+        "Mars_facts_table" : Mars_facts_table, "hemisphere_image_urls": hemisphere_image_urls, "last_scraped": last_scraped}
     
     return results

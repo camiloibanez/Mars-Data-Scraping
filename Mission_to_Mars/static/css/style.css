@@ -38,6 +38,11 @@
     background-color: #C46210;
 }
 
+.updated {
+    position: relative;
+    float: right;
+}
+
 @media (min-width: 1517px) {
     .featured_img {
         width: 800px;
