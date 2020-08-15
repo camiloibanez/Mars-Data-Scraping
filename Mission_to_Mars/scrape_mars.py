@@ -8,6 +8,7 @@ def scrape():
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
 
+    # Scraping latest mars news
     url = "https://mars.nasa.gov/news/"
     browser.visit(url)
     
@@ -19,6 +20,7 @@ def scrape():
     news_title = soup.find_all('div', class_='content_title')[1].text
     news_p = soup.find_all('div', class_='article_teaser_body')[0].text
 
+    # Scraping latest features image
     url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(url)
 
@@ -28,6 +30,7 @@ def scrape():
     image_url = soup.find_all('article', class_='carousel_item')[0]['style'][24:-3]
     featured_image_url = 'https://www.jpl.nasa.gov/' + image_url
 
+    # Scraping latest mars weather
     url = "https://twitter.com/marswxreport?lang=en"
     browser.visit(url)
 
@@ -38,11 +41,13 @@ def scrape():
 
     mars_weather = soup.article.find_all('span')[4].text
 
+    # Scraping mars quick facts
     Mars_facts_df = pd.read_html("https://space-facts.com/mars/")[0]
     Mars_facts_df.rename(columns={0: "description", 1: "value"}, inplace=True)
     Mars_facts_df.set_index(['description', 'value'], inplace=True)
     Mars_facts_table = Mars_facts_df.to_html(classes='data', header=True)
 
+    # Scraping images of mars hemispheres and their titles
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(url)
 
@@ -50,13 +55,15 @@ def scrape():
     soup = BeautifulSoup(html, 'html.parser')
 
     hemisphere_image_urls = []
-
-    for peice in soup.find_all('div', class_="description"):
-        title_list = peice.h3.text.split(" ")
+    
+    # Scraping mars hemisphere titles
+    for piece in soup.find_all('div', class_="description"):
+        title_list = piece.h3.text.split(" ")
         title_list.pop()
         title = " ".join(title_list)
         hemisphere_image_urls.append({'title': f"{title}"})
     
+    # Scraping mars hemisphere images
     for x in range(len(hemisphere_image_urls)):
         url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
         browser.visit(url)
@@ -69,6 +76,7 @@ def scrape():
 
     browser.quit()
     
+    # Recorded time of scrape
     last_scraped = datetime.datetime.now()
     last_scraped = last_scraped.strftime("%Y-%m-%d %I:%M")
     last_scraped = last_scraped.replace(" 0", " ")
