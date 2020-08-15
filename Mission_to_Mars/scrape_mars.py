@@ -71,6 +71,7 @@ def scrape():
     
     last_scraped = datetime.datetime.now()
     last_scraped = last_scraped.strftime("%Y-%m-%d %I:%M")
+    last_scraped = last_scraped.replace(" 0", " ")
 
     results = {"news_title": news_title, "news_p": news_p, "featured_image_url" : featured_image_url, "mars_weather": mars_weather,
         "Mars_facts_table" : Mars_facts_table, "hemisphere_image_urls": hemisphere_image_urls, "last_scraped": last_scraped}
