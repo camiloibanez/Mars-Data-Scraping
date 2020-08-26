@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card" style="width: 18rem;">
-                                <img src="{{ pic1.img_url }}" class="card-img-top" alt="{{ pic1.title }}">
+                                <img src="{{ pic1.img_url }}" class="card-img-top myImages" alt="{{ pic1.title }}">
                                 <div class="card-body">
                                 <p class="card-text">{{ pic1.title }}</p>
                                 </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card" style="width: 18rem;">
-                                <img src="{{ pic2.img_url }}" class="card-img-top" alt="{{ pic2.title }}">
+                                <img src="{{ pic2.img_url }}" class="card-img-top myImages" alt="{{ pic2.title }}">
                                 <div class="card-body">
                                 <p class="card-text">{{ pic2.title }}</p>
                                 </div>
@@ -69,7 +69,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card" style="width: 18rem;">
-                                <img src="{{ pic3.img_url }}" class="card-img-top" alt="{{ pic3.title }}">
+                                <img src="{{ pic3.img_url }}" class="card-img-top myImages" alt="{{ pic3.title }}">
                                 <div class="card-body">
                                 <p class="card-text">{{ pic3.title }}</p>
                                 </div>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card" style="width: 18rem;">
-                                <img src="{{ pic4.img_url }}" class="card-img-top" alt="{{ pic4.title }}">
+                                <img src="{{ pic4.img_url }}" class="card-img-top myImages" alt="{{ pic4.title }}">
                                 <div class="card-body">
                                 <p class="card-text">{{ pic4.title }}</p>
                                 </div>
@@ -85,6 +85,18 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- The Close Button -->
+                <span class="close">&times;</span>
+
+                <!-- Modal Content (The Image) -->
+                <img class="modal-content" id="img01">
+
+                <!-- Modal Caption (Image Text) -->
+                <div id="caption"></div>
             </div>
             <div class="updated">
                 <p>Last Updated: {{ dict.last_scraped }}</p>
@@ -95,6 +107,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../static/js/logic.js"></script>
 </body>
     
 </html>
