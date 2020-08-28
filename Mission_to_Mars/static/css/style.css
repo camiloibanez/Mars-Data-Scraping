@@ -10,21 +10,21 @@
 
 .block1 {
     padding: 46px 100px 36px 100px;
-    background-color: #FFD300;
+    background-color: #FFE787;
 }
 
 .jumbotron {
-    background-color: #FF3800 !important;
+    background-color: #D1D0A3 !important;
 }
 
 .btn1 {
-    background-color: #8B0000 !important;
-    border-color: #8B0000 !important;
+    background-color: #7C6C77 !important;
+    border-color: #7C6C77 !important;
 }
 
 .block2 {
     padding-bottom: 6px;
-    background-color: #FFBF00;
+    background-color: #EBF8B8;
 }
 
 .heading {
@@ -35,7 +35,7 @@
     padding-top: 40px;
     padding-bottom: 46px;
     border-radius: 5px;
-    background-color: #C46210;
+    background-color: #AAA694;
 }
 
 .updated {
@@ -146,7 +146,7 @@
 }
 
 .weather_block {
-    background-color: #FFEF00;
+    background-color: #D1D0A3;
     opacity: 0.75;
     margin: 20px;
     border-style: solid;
