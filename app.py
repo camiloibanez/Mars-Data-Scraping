@@ -3,7 +3,7 @@ import pymongo
 
 app = Flask(__name__)
 
-conn = "mongodb://localhost:27017"
+conn = "mongodb+srv://Client1:QEPI88Emag3yxyvU@mars-scraped-info.0hpmq.mongodb.net/mars_db?retryWrites=true&w=majority"
 client = pymongo.MongoClient(conn)
 
 db = client.mars_db
