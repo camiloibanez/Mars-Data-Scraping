@@ -13,8 +13,6 @@ def scrape():
 
     chrome_options = Options()
     chrome_options.binary_location = GOOGLE_CHROME_PATH
-    chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('--no-sandbox')
 
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
@@ -48,7 +46,7 @@ def scrape():
 
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
-
+    
     mars_weather = soup.article.find_all('span')[4].text
 
     # Scraping mars quick facts
