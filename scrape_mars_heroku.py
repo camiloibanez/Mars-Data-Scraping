@@ -44,7 +44,7 @@ def scrape():
     url = "https://twitter.com/marswxreport?lang=en"
     driver.get(url)
 
-    time.sleep(2)
+    time.sleep(5)
 
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
@@ -76,11 +76,11 @@ def scrape():
     # Scraping mars hemisphere images
     for x in range(len(hemisphere_image_urls)):
         url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-        browser.visit(url)
-        html = browser.html
+        driver.get(url)
+        html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
-        browser.click_link_by_partial_text(f"{hemisphere_image_urls[x]['title']}")
-        html = browser.html
+        driver.find_element_by_partial_link_text(f"{hemisphere_image_urls[x]['title']}").click()
+        html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
         hemisphere_image_urls[x]['img_url'] = soup.find('div', class_="downloads").find_all('a')[0]['href']
 
