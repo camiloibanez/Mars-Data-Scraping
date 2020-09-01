@@ -4,9 +4,24 @@ def scrape():
     import pandas as pd
     import datetime
     import time
+    import os
+    from selenium import webdriver
 
-    executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
+    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+
+    # chrome_options = webdriver.ChromeOptions()
+    # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_PATH")
+    # chrome_options.add_argument('--disable-gpu')
+    # chrome_options.add_argument('--no-sandbox')
+
+    # browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+
+    executable_path = {'executable_path': os.environ.get("CHROMEDRIVER_PATH", 'chromedriver.exe')}
+    browser = Browser('chrome', **executable_path, headless=True)
+
+    # executable_path = {'executable_path': 'chromedriver.exe'}
+    # browser = Browser('chrome', **executable_path, headless=True)
 
     # Scraping latest mars news
     url = "https://mars.nasa.gov/news/"

@@ -26,9 +26,11 @@ def index():
 def to_scrape():
     from scrape_mars import scrape
 
+    results = scrape()
+
     db.scraped_info.drop()
     db.scraped_info.insert_one(
-        scrape()
+        results
     )
 
     return redirect("/")
