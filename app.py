@@ -24,7 +24,7 @@ def index():
 
 @app.route("/scrape")
 def to_scrape():
-    from scrape_mars import scrape
+    from scrape_mars_heroku import scrape
 
     results = scrape()
 

@@ -4,17 +4,27 @@ def scrape():
     import pandas as pd
     import datetime
     import time
+    import os
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
 
-    executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=True)
+    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
+    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+
+    chrome_options = Options()
+    chrome_options.binary_location = GOOGLE_CHROME_PATH
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
+
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
     # Scraping latest mars news
     url = "https://mars.nasa.gov/news/"
-    browser.visit(url)
+    driver.get(url)
     
     time.sleep(1)
 
-    html = browser.html
+    html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
 
     news_title = soup.find_all('div', class_='content_title')[1].text
@@ -22,9 +32,9 @@ def scrape():
 
     # Scraping latest features image
     url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
-    browser.visit(url)
+    driver.get(url)
 
-    html = browser.html
+    html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
 
     image_url = soup.find_all('article', class_='carousel_item')[0]['style'][24:-3]
@@ -32,11 +42,11 @@ def scrape():
 
     # Scraping latest mars weather
     url = "https://twitter.com/marswxreport?lang=en"
-    browser.visit(url)
+    driver.get(url)
 
     time.sleep(2)
 
-    html = browser.html
+    html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
 
     mars_weather = soup.article.find_all('span')[4].text
@@ -49,9 +59,9 @@ def scrape():
 
     # Scraping images of mars hemispheres and their titles
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    browser.visit(url)
+    driver.get(url)
 
-    html = browser.html
+    html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
 
     hemisphere_image_urls = []
@@ -74,7 +84,7 @@ def scrape():
         soup = BeautifulSoup(html, 'html.parser')
         hemisphere_image_urls[x]['img_url'] = soup.find('div', class_="downloads").find_all('a')[0]['href']
 
-    browser.quit()
+    driver.quit()
     
     # Recorded time of scrape
     last_scraped = datetime.datetime.now()
