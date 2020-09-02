@@ -44,21 +44,21 @@ def scrape():
     featured_image_url = 'https://www.jpl.nasa.gov/' + image_url
 
     # Scraping latest mars weather
-    url = "https://twitter.com/marswxreport?lang=en"
-    driver.get(url)
+    # url = "https://twitter.com/marswxreport?lang=en"
+    # driver.get(url)
 
-    time.sleep(2)
+    # time.sleep(2)
 
-    html = driver.page_source
-    soup = BeautifulSoup(html, 'html.parser')
+    # html = driver.page_source
+    # soup = BeautifulSoup(html, 'html.parser')
 
-    if soup is None:
-        sys.stderr.write("No soup")
-    else:
-        if soup.article is None:
-            sys.stderr.write("No soup.article")
+    # if soup is None:
+    #     sys.stderr.write("No soup")
+    # else:
+    #     if soup.article is None:
+    #         sys.stderr.write("No soup.article")
 
-    mars_weather = soup.article.find_all('span')[4].text
+    # mars_weather = soup.article.find_all('span')[4].text
 
     # Scraping mars quick facts
     Mars_facts_df = pd.read_html("https://space-facts.com/mars/")[0]
