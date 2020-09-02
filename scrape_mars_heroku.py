@@ -5,6 +5,7 @@ def scrape():
     import datetime
     import time
     import os
+    import sys
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
 
@@ -13,6 +14,10 @@ def scrape():
 
     chrome_options = Options()
     chrome_options.binary_location = GOOGLE_CHROME_PATH
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
 
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
@@ -42,11 +47,13 @@ def scrape():
     url = "https://twitter.com/marswxreport?lang=en"
     driver.get(url)
 
-    time.sleep(5)
+    time.sleep(2)
 
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
-    
+
+    sys.stderr.write("Can you hear me ???")
+
     mars_weather = soup.article.find_all('span')[4].text
 
     # Scraping mars quick facts
