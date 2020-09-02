@@ -61,39 +61,6 @@ def scrape():
 
     mars_weather = soup.article.find_all('span')[4].text
 
-    # Scraping mars quick facts
-    Mars_facts_df = pd.read_html("https://space-facts.com/mars/")[0]
-    Mars_facts_df.rename(columns={0: "description", 1: "value"}, inplace=True)
-    Mars_facts_df.set_index(['description', 'value'], inplace=True)
-    Mars_facts_table = Mars_facts_df.to_html(classes='data', header=True)
-
-    # Scraping images of mars hemispheres and their titles
-    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    driver.get(url)
-
-    html = driver.page_source
-    soup = BeautifulSoup(html, 'html.parser')
-
-    hemisphere_image_urls = []
-    
-    # Scraping mars hemisphere titles
-    for piece in soup.find_all('div', class_="description"):
-        title_list = piece.h3.text.split(" ")
-        title_list.pop()
-        title = " ".join(title_list)
-        hemisphere_image_urls.append({'title': f"{title}"})
-    
-    # Scraping mars hemisphere images
-    for x in range(len(hemisphere_image_urls)):
-        url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-        driver.get(url)
-        html = driver.page_source
-        soup = BeautifulSoup(html, 'html.parser')
-        driver.find_element_by_partial_link_text(f"{hemisphere_image_urls[x]['title']}").click()
-        html = driver.page_source
-        soup = BeautifulSoup(html, 'html.parser')
-        hemisphere_image_urls[x]['img_url'] = soup.find('div', class_="downloads").find_all('a')[0]['href']
-
     driver.quit()
     
     # Recorded time of scrape
@@ -102,6 +69,6 @@ def scrape():
     last_scraped = last_scraped.replace(" 0", " ")
 
     results = {"news_title": news_title, "news_p": news_p, "featured_image_url" : featured_image_url, "mars_weather": mars_weather,
-        "Mars_facts_table" : Mars_facts_table, "hemisphere_image_urls": hemisphere_image_urls, "last_scraped": last_scraped}
+        "last_scraped": last_scraped}
     
     return results
