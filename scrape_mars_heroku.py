@@ -13,19 +13,19 @@ def scrape():
     from selenium.webdriver.support import expected_conditions as EC
 
 
-    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
-    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+    # GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
+    # CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
     chrome_options = Options()
-    chrome_options.binary_location = GOOGLE_CHROME_PATH
+    # chrome_options.binary_location = GOOGLE_CHROME_PATH
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
 
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+    # driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
-    # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=chrome_options)
+    driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=chrome_options)
 
     # Scraping latest mars news
     url = "https://mars.nasa.gov/news/"
@@ -53,11 +53,18 @@ def scrape():
     url = "https://twitter.com/marswxreport?lang=en"
     driver.get(url)
 
-    element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.TAG_NAME, "article")))
-    # time.sleep(10)
+    # element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.TAG_NAME, "article")))
+    time.sleep(2)
 
     html = driver.page_source
+
+    sys.stderr.write("html: " + str(html)[:20])
+
     soup = BeautifulSoup(html, 'html.parser')
+
+    sys.stderr.write("soup: " + str(soup)[:20])
+
+    sys.stderr.write("soup article: " + str(soup.article)[:20])
 
     mars_weather = soup.article.find_all('span')[4].text
 

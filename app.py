@@ -33,8 +33,6 @@ def to_scrape():
 
     results.update(results2)
 
-    print(results)
-
     db.scraped_info.drop()
     db.scraped_info.insert_one(
         results
