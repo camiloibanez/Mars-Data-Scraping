@@ -17,15 +17,15 @@ def scrape():
     CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
     chrome_options = Options()
-    # chrome_options.binary_location = GOOGLE_CHROME_PATH
+    chrome_options.binary_location = GOOGLE_CHROME_PATH
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
 
-    # driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
-    driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=chrome_options)
+    # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=chrome_options)
 
     # Scraping latest mars news
     url = "https://mars.nasa.gov/news/"
