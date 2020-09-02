@@ -8,6 +8,7 @@ def scrape():
     import sys
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
+    import requests
 
     GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
     CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
@@ -20,6 +21,8 @@ def scrape():
     chrome_options.add_argument("--no-sandbox")
 
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+
+    # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=chrome_options)
 
     # Scraping latest mars news
     url = "https://mars.nasa.gov/news/"
@@ -44,21 +47,15 @@ def scrape():
     featured_image_url = 'https://www.jpl.nasa.gov/' + image_url
 
     # Scraping latest mars weather
-    # url = "https://twitter.com/marswxreport?lang=en"
-    # driver.get(url)
+    url = "https://twitter.com/marswxreport?lang=en"
+    driver.get(url)
 
-    # time.sleep(2)
+    time.sleep(2)
 
-    # html = driver.page_source
-    # soup = BeautifulSoup(html, 'html.parser')
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
 
-    # if soup is None:
-    #     sys.stderr.write("No soup")
-    # else:
-    #     if soup.article is None:
-    #         sys.stderr.write("No soup.article")
-
-    # mars_weather = soup.article.find_all('span')[4].text
+    mars_weather = soup.article.find_all('span')[4].text
 
     # Scraping mars quick facts
     Mars_facts_df = pd.read_html("https://space-facts.com/mars/")[0]
