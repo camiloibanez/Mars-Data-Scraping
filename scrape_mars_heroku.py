@@ -61,6 +61,8 @@ def scrape():
 
     mars_weather = soup.article.find_all('span')[4].text
 
+    sys.stderr.write("I made it past twitter")
+    
     driver.quit()
     
     # Recorded time of scrape
