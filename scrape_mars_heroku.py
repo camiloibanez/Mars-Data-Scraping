@@ -52,7 +52,11 @@ def scrape():
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
 
-    sys.stderr.write("Can you hear me ???")
+    if soup is None:
+        sys.stderr.write("No soup")
+    else:
+        if soup.article is None:
+            sys.stderr.write("No soup.article")
 
     mars_weather = soup.article.find_all('span')[4].text
 
