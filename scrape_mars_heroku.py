@@ -49,7 +49,7 @@ def scrape():
     url = "https://twitter.com/marswxreport?lang=en"
     driver.get(url)
 
-    time.sleep(2)
+    time.sleep(10)
 
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
