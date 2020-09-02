@@ -8,7 +8,6 @@ def scrape():
     import sys
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
-    import requests
 
     GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
     CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
