@@ -128,3 +128,18 @@ To submit your work to BootCampSpot, create a new GitHub repository and upload t
 ### Copyright
 
 Trilogy Education Services © 2019. All Rights Reserved.
+
+
+## Running app
+
+Install virtual environment handler: `pip install virtualenv`
+
+Create virtual environment: `virtualenv venv`. Here it's named "venv," but you can name it whatever you like.
+
+Activate virtual environment: `source venv/scripts/activate`
+
+Install dependencies on virtual environment: `pip install -r requirements.txt`
+
+Run Flask app: `python -m flask run`
+
+When you're done, Deactivate virtual environment: `deactivate`
